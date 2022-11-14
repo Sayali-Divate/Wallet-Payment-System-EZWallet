@@ -11,7 +11,7 @@
 <br>
 <br>
 
-1) Bhushan Taru  -Team Lead, Responsible for creating the Beneficiary module and Responsible For handeling the Exceptions .
+1) Bhushan Taru  -Responsible for creating the Beneficiary module and Responsible For handeling the Exceptions .
 
 2) Hari Tripathi -Responsible for creating the Bank Account Module.
 

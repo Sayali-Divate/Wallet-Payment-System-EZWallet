@@ -25,7 +25,7 @@ public class Wallet {
 	private Integer walletId;
 	private BigDecimal balance;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "customer_Id")
 	private Customer customer;
 	

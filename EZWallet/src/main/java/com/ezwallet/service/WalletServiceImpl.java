@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -191,6 +193,7 @@ public class WalletServiceImpl implements WalletService{
 	}
 
 	@Override
+	@Transactional
 	public Customer updateCustomerDetails(Customer customer, String key) throws CustomerException {
 		
 		if(key==null) throw new CustomerException("Please log in to continue");
@@ -202,18 +205,14 @@ public class WalletServiceImpl implements WalletService{
 		
 		Optional<Customer> cust = customerRepo.findById(user.getUserId());
 		
+		
 		if(!cust.isPresent()) throw new CustomerException("Customer does not exist");
 		
-//		List<Customer> custList = cust.stream().collect(Collectors.toList());
+		customer.setCustomerId(user.getUserId());
 		
-		Customer customerToUpdate = cust.get();
+		return customerRepo.save(customer);		
 		
-		customerToUpdate.setMobileNumber(customer.getMobileNumber());
 		
-		customerToUpdate.setMobileNumber(customer.getName());
-		customerToUpdate.setMobileNumber(customer.getPassword());
-		
-		return	customerRepo.save(customerToUpdate);
 	}
 	
 	
